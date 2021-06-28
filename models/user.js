@@ -8,7 +8,7 @@ var userSchema = new Schema({
 
   last_name:    { type: String,     Required: false },
 
-  email_address: { type: String ,    Required:  true },
+  email: { type: String ,   unique: true, Required:  true },
 
   mobile_number: { type: Number ,    Required: true },
 
@@ -16,7 +16,9 @@ var userSchema = new Schema({
 
   gender: { type: String ,      Required: true},
 
-  address: {type : String }
+  permanent_address: {type : String },
+
+  optional_address: {type : String }
 });
 
 module.exports = mongoose.model('Users', userSchema);

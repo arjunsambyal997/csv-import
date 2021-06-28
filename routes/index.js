@@ -25,11 +25,13 @@ router.get('/', function(req, res, next) {
          var item = new User({
               first_name: data[0] ,
               last_name: data[1]   ,
-              email_address: data[2],
+              email: data[2],
               mobile_number: data[3],
               date_of_birth:data[4],
               gender:data[5],
-              address:data[6] 
+              permanent_address:data[6],
+              optional_address:data[7]
+
          });
          
           item.save(function(error){

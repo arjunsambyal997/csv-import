@@ -17,7 +17,7 @@ var mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/dbuser', { useMongoClient: true});
-console.log('connected abc');
+console.log('connected to users');
 
 
 var app = express();
@@ -54,6 +54,7 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+  console.log(err);
 });
 
 module.exports = app;
