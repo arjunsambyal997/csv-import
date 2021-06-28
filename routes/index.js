@@ -37,6 +37,7 @@ router.get('/', function(req, res, next) {
           item.save(function(error){
             console.log(item);
               if(error){
+                  console.log( "\x1b[1m","\x1b[41m","can be duplicate entries, data already exits in database check fecth for new data already added","\x1b[0m");
                    throw error;
               }
           }); 
@@ -46,8 +47,8 @@ router.get('/', function(req, res, next) {
     });
   
     stream.pipe(csvStream);
-    res.json({success : "Data imported successfully.", status : 200});
-    console.log('data imported to database');
+    res.json({success : "Data imported successfully.. :-)", status : 200});
+    console.log("\x1b[1m","\x1b[42m","data imported to database","\x1b[0m");
 
      
   }).get('/fetchdata', function(req, res, next) {
@@ -55,8 +56,11 @@ router.get('/', function(req, res, next) {
     User.find({}, function(err, docs) {
         if (!err){ 
             res.json({success : "Updated Successfully", status : 200, data: docs});
+            console.log("\x1b[1m","\x1b[42m","Data fetched properly no duplicate found","\x1b[0m");
         } else { 
+            console.log(err);
             throw err;
+            
         }
     });
   

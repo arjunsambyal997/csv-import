@@ -17,7 +17,7 @@ var mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/dbuser', { useMongoClient: true});
-console.log('connected to users');
+console.log("\x1b[1m","\x1b[42m","connected to database users","\x1b[0m");
 
 
 var app = express();
@@ -50,11 +50,11 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
+  
 
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-  console.log(err);
 });
 
 module.exports = app;
